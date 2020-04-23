@@ -328,5 +328,40 @@ Turn in your `activations.cpp`, `classifier.cpp`, and `questions.txt` on canvas 
  - We provide you with some tools in the `Matrix` class for easy debugging. You can use `Matrix::print(int maxrows, int maxcols)` to print out matrices for debugging.
  - We also provide a handy `debug_print` function in `classifier.cpp` which will only print if you call`set_verbose(true)` first.
  
- 
+## Grading rubric
+
+```
+forward_linear    1
+forward_logistic  1
+forward_tanh      1
+forward_relu      1
+forward_lrelu     1
+forward_softmax   1
+backward_linear   1
+backward_logistic 2
+backward_tanh     2
+backward_relu     2
+backward_lrelu    2
+backward_softmax  3
+softmax_jacobian  3
+forward_weights   3
+forward_activation 3
+backward_activate_matrix 3
+backward_xw       3
+backward_w        3
+backward_x        3
+update_layer      3
+Q2.2.1            2
+Q2.2.2            2
+Q2.2.3            2
+Q2.3.1            2
+Q2.3.2            2
+Q2.3.3            2
+Q2.3.4            2
+Q2.3.5            2
+Q2.3.6            2
+Q3.2.1            2
+
+Total 62
+```
  
