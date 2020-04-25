@@ -253,11 +253,9 @@ Calculates the cross-entropy loss for the ground-truth labels `y` and our predic
 
     L = Σ(-y_i log(p_i))
 
-for a single data point, summing across the different classes. Cross-entropy loss is nice to use with our softmax activation because the partial derivatives are nice. If the output of our final layer uses a softmax: `y = σ(wx)` then:
+for a single data point, summing across the different classes. If the output of our final layer uses a softmax: `y = σ(wx)` then:
 
-    dL/d(wx) = (y - truth)
-
-During training, we'll just calculate `dL/dy` as `(y - truth)` and set the gradient of the softmax to be 1 everywhere to have the same effect, as discussed earlier. This avoids numerical instability with calculating the "true" `dL/dy` and `dσ(x)/dx` for cross-entropy loss and the softmax function independently and multiplying them together.
+    dL/d(wx) = -Σ(y_i / p_i)
 
 #### `void Model::train(...)` ####
 
