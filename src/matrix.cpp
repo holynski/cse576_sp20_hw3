@@ -216,7 +216,7 @@ Matrix LUP_solve(const Matrix &L, const Matrix &U, const Matrix &p, const Matrix
 Matrix Matrix::exp(void) const {
   //TIME(2);
   const Matrix &m = *this;
-  Matrix t(cols, rows);
+  Matrix t(rows, cols);
   for (int i = 0; i < t.rows; i++) {
     for (int j = 0; j < t.cols; j++) {
       t(i, j) = std::exp(m(i, j));
