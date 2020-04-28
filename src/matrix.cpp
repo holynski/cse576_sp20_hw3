@@ -214,12 +214,23 @@ Matrix LUP_solve(const Matrix &L, const Matrix &U, const Matrix &p, const Matrix
 
 
 Matrix Matrix::exp(void) const {
-  //TIME(2);
   const Matrix &m = *this;
   Matrix t(rows, cols);
   for (int i = 0; i < t.rows; i++) {
     for (int j = 0; j < t.cols; j++) {
       t(i, j) = std::exp(m(i, j));
+    }
+  }
+  return t;
+}
+
+
+Matrix Matrix::abs(void) const {
+  const Matrix &m = *this;
+  Matrix t(rows, cols);
+  for (int i = 0; i < t.rows; i++) {
+    for (int j = 0; j < t.cols; j++) {
+      t(i, j) = std::abs(m(i, j));
     }
   }
   return t;
@@ -410,3 +421,23 @@ void test_matrix() {
 
   }
 }
+
+void Matrix::save_binary(const string &filename) const {
+  FILE *fn = fopen(filename.c_str(), "wb");
+  fwrite(&rows, sizeof(rows), 1, fn);
+  fwrite(&cols, sizeof(cols), 1, fn);
+  fwrite(data, sizeof(double), rows * cols, fn);
+  fclose(fn);
+}
+
+void Matrix::load_binary(const string &filename) {
+  int rows, cols;
+  FILE *fn = fopen(filename.c_str(), "rb");
+  fread(&rows, sizeof(rows), 1, fn);
+  fread(&cols, sizeof(cols), 1, fn);
+  Matrix matrix(rows, cols);
+  size_t bytes = fread(matrix.data, sizeof(double), rows * cols, fn);
+  fclose(fn);
+  *this = matrix;
+}
+

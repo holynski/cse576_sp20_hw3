@@ -16,7 +16,7 @@ add_library(nn SHARED
         src/utils.h
         )
 
-link_libraries(nn)
+link_libraries(nn stdc++)
 
 add_executable(train src/train.cpp)
-
+add_executable(test src/test.cpp)
