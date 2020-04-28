@@ -36,6 +36,13 @@ void test_forward_linear() {
   TEST(matrix_within_eps(gt, output, EPS));
 }
 
+void test_forward_logistic() {
+  Matrix a = load_binary("solutions/a.bin");
+  Matrix gt = load_binary("solutions/forward_logistic.bin");
+  Matrix output = forward_logistic(a);
+  TEST(matrix_within_eps(gt, output, EPS));
+}
+
 void test_forward_tanh() {
   Matrix a = load_binary("solutions/a.bin");
   Matrix gt = load_binary("solutions/forward_tanh.bin");
@@ -73,6 +80,14 @@ void test_backward_linear() {
   TEST(matrix_within_eps(gt, output, EPS));
 }
 
+void test_backward_logistic() {
+  Matrix a = load_binary("solutions/a.bin");
+  Matrix b = load_binary("solutions/b.bin");
+  Matrix gt = load_binary("solutions/backward_logistic.bin");
+  Matrix output = backward_logistic(a, b);
+  TEST(matrix_within_eps(gt, output, EPS));
+}
+
 void test_backward_tanh() {
   Matrix a = load_binary("solutions/a.bin");
   Matrix b = load_binary("solutions/b.bin");
@@ -107,12 +122,14 @@ void test_backward_softmax() {
 
 void run_tests() {
   test_forward_linear();
+  test_forward_logistic();
   test_forward_tanh();
   test_forward_relu();
   test_forward_lrelu();
   test_forward_softmax();
 
   test_backward_linear();
+  test_backward_logistic();
   test_backward_tanh();
   test_backward_relu();
   test_backward_lrelu();
