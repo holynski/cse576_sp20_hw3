@@ -107,8 +107,12 @@ struct Matrix {
   Matrix inverse(void) const;
   Matrix transpose(void) const;
   Matrix exp(void) const;
+  Matrix abs(void) const;
   Matrix get_row(int i) const;
 
+  // I/O member functions
+  void save_binary(const string& filename) const;
+  void load_binary(const string& filename);
 };
 
 Matrix operator-(const Matrix &a);
@@ -170,3 +174,10 @@ inline Vector2 operator/(double s, Vector2 m) { return Vector2(m.a / s, m.b / s)
 inline Vector2 operator/(Vector2 m, double s) { return Vector2(m.a / s, m.b / s); }
 
 inline Vector2 operator*(Matrix2x2 m, Vector2 v) { return Vector2(m.a * v.a + m.b * v.b, m.c * v.a + m.d * v.b); }
+
+inline Matrix load_binary (const string& filename) {
+  Matrix mat;
+  mat.load_binary(filename);
+  return mat;
+}
+
