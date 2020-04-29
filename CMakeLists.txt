@@ -11,6 +11,7 @@ add_library(nn SHARED
         src/classifier.cpp # modify this file
         src/matrix.cpp
         src/data.cpp
+        src/activations.h
         src/matrix.h
         src/neural.h
         src/utils.h
