@@ -1,6 +1,6 @@
 #include "matrix.h"
 #include "utils.h"
-#include "activations.cpp"
+#include "activations.h"
 
 #include <string>
 #include <iostream>
