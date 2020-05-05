@@ -289,8 +289,6 @@ Answer questions 2.3.1-2.3.6 in [`questions.txt`](questions.txt).
 
 #### Notes on Question 2.3.6
 
-Note that you need to calculate the gradient of the new loss with respect to model output and change `dL` in `train_model()` accordingly. 
-
 While the derivative of L2 loss is straightforward, the gradient of L1 loss is constant and will affect the training (either the accuracy will be low or the model will converge to a large loss within a few iterations.) 
 
 To avoid this, compute the [Huber loss](https://en.wikipedia.org/wiki/Huber_loss) instead of L1 and write Huber loss equation in `l1_loss()`. In simple words, Huber loss is equal to L1 loss when `y - p` is > 1 and equal to L2 loss when <= 1. You may have to be careful about the sign (i.e. `y-p` or `p-y`).
